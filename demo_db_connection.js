@@ -20,6 +20,21 @@ Remember stringing together 5 function calls or accessing sub-sub-sub attributes
 }); //there should be a connection.end(); call here in order to close out the SQL connection and save resources.  I added it.
 */
 
+/*Thoughts
+I admit, it was an AI that did some stuff below this.  Why include the command in the schema definition
+is some logic I am too new to understand.  Is this standard?  I should think not...
+But maybe this is how JS does it.  Anyways I'm not refactoring this right now.
+It does make it easy to see what's going to happen with this schema though...
+*/
+/*Actual Notes
+This code is intended to check for several tables, if they don't exist then we want to create them.
+The schema for each table is stored in a value.
+1. Connect to mysql server
+2. Check if tables exist
+3. Use complicated regex expression to parse the command out of our schema *Why would AI do this?
+4. Create or modify the tables to match our schema *no error handling for removing a column with values
+The AI never closed that connection to the SQL server, weird.
+*/
 const USERS_TABLE_SCHEMA = `
   CREATE TABLE IF NOT EXISTS Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
